@@ -8,11 +8,18 @@ public class BuildingPlacement : MonoBehaviour {
 	private bool hasPlaced;
 	private PlaceableBuilding placeableBuildingOld;
 
+	private float buildingPrice = 0;
+
+	private Economy_HUD ecoHUD;
+
+	public GameObject[] lots;
+
 	public LayerMask buildingsMask;
 
 	// Use this for initialization
 	void Start () {
-	
+		lots = GameObject.FindGameObjectsWithTag("Lot");
+		ecoHUD = gameObject.GetComponent<Economy_HUD>();
 	}
 	
 	// Update is called once per frame
@@ -26,8 +33,17 @@ public class BuildingPlacement : MonoBehaviour {
 			currentBuilding.position = new Vector3(p.x, 0.2f, p.z);
 
 			if (Input.GetMouseButtonDown(0)) {
-				if(IsLeagalPosition()) {
+				if(IsLeagalPosition() && IsInLot() && !IsInRoad()) {
 					hasPlaced = true;
+					foreach (GameObject go in lots) {
+						Transform[] allChildren = go.GetComponentsInChildren<Transform>();
+						foreach (Transform child in allChildren) {
+							if (child.gameObject.name.Contains("Lot_Placement")) {
+								child.gameObject.renderer.enabled = false;
+							}
+						}
+					}
+					ecoHUD.playerMoney -= buildingPrice;
 				}
 			}
 		} else {
@@ -56,9 +72,32 @@ public class BuildingPlacement : MonoBehaviour {
 		return true;
 	}
 
-	public void SetItem(GameObject b) {
+	bool IsInLot() {
+		if (placeableBuilding.lotColliders.Count > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	bool IsInRoad() {
+		if (placeableBuilding.roadColliders.Count > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	public void SetItem(GameObject b, float price) {
 		hasPlaced = false;
 		currentBuilding = ((GameObject)Instantiate(b)).transform;
 		placeableBuilding = currentBuilding.GetComponent<PlaceableBuilding>();
+		buildingPrice = price;
+		foreach (GameObject go in lots) {
+			Transform[] allChildren = go.GetComponentsInChildren<Transform>();
+			foreach (Transform child in allChildren) {
+				if (child.gameObject.name.Contains("Lot_Placement")) {
+					child.gameObject.renderer.enabled = true;
+				}
+			}
+		}
 	}
 }
