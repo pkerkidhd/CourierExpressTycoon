@@ -50,7 +50,10 @@
      <Compile Include="Assets\Scripts\Building\BuildingManager.cs" />
      <Compile Include="Assets\Scripts\Building\BuildingPlacement.cs" />
      <Compile Include="Assets\Scripts\Building\PlaceableBuilding.cs" />
+     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
      <Compile Include="Assets\Scripts\HUD\Economy_HUD.cs" />
+     <Compile Include="Assets\Scripts\Lot\LotManagment.cs" />
+     <Compile Include="Assets\Scripts\Lot\LotSpawnCar.cs" />
      <Compile Include="Assets\Scripts\Player\CameraMovement.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

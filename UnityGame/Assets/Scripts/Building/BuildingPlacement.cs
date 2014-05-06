@@ -10,8 +10,6 @@ public class BuildingPlacement : MonoBehaviour {
 
 	private float buildingPrice = 0;
 
-	private Economy_HUD ecoHUD;
-
 	public GameObject[] lots;
 
 	public LayerMask buildingsMask;
@@ -19,7 +17,6 @@ public class BuildingPlacement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		lots = GameObject.FindGameObjectsWithTag("Lot");
-		ecoHUD = gameObject.GetComponent<Economy_HUD>();
 	}
 	
 	// Update is called once per frame
@@ -43,8 +40,21 @@ public class BuildingPlacement : MonoBehaviour {
 							}
 						}
 					}
-					ecoHUD.playerMoney -= buildingPrice;
+					GameManager.ecoHUD.playerMoney -= buildingPrice;
+					GameManager.isBuilding = false;
 				}
+			} else if (Input.GetMouseButton(1)) {
+				GameManager.isBuilding = false;
+				hasPlaced = false;
+				foreach (GameObject go in lots) {
+					Transform[] allChildren = go.GetComponentsInChildren<Transform>();
+					foreach (Transform child in allChildren) {
+						if (child.gameObject.name.Contains("Lot_Placement")) {
+							child.gameObject.renderer.enabled = false;
+						}
+					}
+				}
+				Destroy(currentBuilding.gameObject);
 			}
 		} else {
 			if (Input.GetMouseButtonDown(0)) {

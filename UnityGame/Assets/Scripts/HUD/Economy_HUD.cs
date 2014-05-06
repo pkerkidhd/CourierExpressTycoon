@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Economy_HUD : MonoBehaviour {
 
-	public float playerMoney = 100.00f;
+	public float playerMoney = 200.00f;
 	private float playerMoneyConvert = 0.0f;
 
 	private string currency_url = "http://davidvo.net/unity/currency.php";
