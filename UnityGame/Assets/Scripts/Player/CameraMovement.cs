@@ -35,14 +35,14 @@ public class CameraMovement : MonoBehaviour {
 		
 		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
 			if (transform.position.y > 4) {
-				yPos -= 10.0f * Time.deltaTime;
+				yPos -= 10.0f * Time.fixedDeltaTime;
 				//Debug.Log("Y: " + transform.position.y);
 			}
 		}
 		
 		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
 			if (transform.position.y < 9) {
-				yPos += 10.0f * Time.deltaTime;
+				yPos += 10.0f * Time.fixedDeltaTime;
 				//Debug.Log("Y: " + transform.position.y);
 			}
 		}
@@ -53,7 +53,7 @@ public class CameraMovement : MonoBehaviour {
 		
 		if (Input.mousePosition.x > theScreenWidth - boundary) {
 		//	if (transform.position.x < 188) {
-				xPos += speed * Time.deltaTime;
+			xPos += speed * Time.fixedDeltaTime;
 				//Debug.Log("X: " + transform.position.x);
 		//	}
 		}
@@ -61,7 +61,7 @@ public class CameraMovement : MonoBehaviour {
 		if (Input.mousePosition.x < 0 + boundary)
 		{
 		//	if (transform.position.x > 9.5) {
-				xPos -= speed * Time.deltaTime;
+			xPos -= speed * Time.fixedDeltaTime;
 				//Debug.Log("X: " + transform.position.x);
 		//	}
 		} 
@@ -69,7 +69,7 @@ public class CameraMovement : MonoBehaviour {
 		if (Input.mousePosition.y > theScreenHeight - boundary)
 		{
 		//	if (transform.position.z < 84) {
-				zPos += speed * Time.deltaTime;
+			zPos += speed * Time.fixedDeltaTime;
 				//Debug.Log("Z: " + transform.position.z);
 		//	}
 		}
@@ -77,7 +77,7 @@ public class CameraMovement : MonoBehaviour {
 		if (Input.mousePosition.y < 0 + boundary)
 		{
 		//	if (transform.position.z > 11) {
-				zPos -= speed * Time.deltaTime;
+			zPos -= speed * Time.fixedDeltaTime;
 				//Debug.Log("Z: " + transform.position.z);
 		//	}
 		}
