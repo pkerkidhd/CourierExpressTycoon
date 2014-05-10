@@ -6,12 +6,12 @@ public class Clock : MonoBehaviour {
 
 	public GUIText time_Txt;
 
-	private float seconds = 0;
-	private float minutes = 00;
-	private float hours = 01;
-	private float oldHours = 00;
+	public float seconds = 0;
+	public float minutes = 00;
+	public float hours = 01;
+	public float oldHours = 00;
 
-	private bool isAm = true;
+	public bool isAm = true;
 
 	// Use this for initialization
 	void Start () {

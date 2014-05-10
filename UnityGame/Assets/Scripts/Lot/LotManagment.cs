@@ -10,11 +10,12 @@ public class LotManagment : MonoBehaviour {
 
 	private float newBalance = 0;
 	private bool isConfirm = false;
-	private bool isBought = false;
+	private LotSaving lotSaving;
 	
 	void Start () {
 		renderer.material.color = Color.grey;
 		lot_Txt.GetComponent<TextMesh>().text = "Lot Price: $" + lotPrice;
+		lotSaving = transform.parent.GetComponent<LotSaving>();
 	}
 
 	void Update () {
@@ -22,19 +23,19 @@ public class LotManagment : MonoBehaviour {
 	}
 
 	void OnMouseOver() {
-		if (!isBought) {
+		if (!lotSaving.isBought) {
 			renderer.material.color -= new Color(0.1F, 0, 0) * 2 * Time.deltaTime;
 		}
 	}
 
 	void OnMouseExit() {
-		if (!isBought) {
+		if (!lotSaving.isBought) {
 			renderer.material.color = Color.grey;
 		}
 	}
 
 	void OnMouseDown() {
-		if (!isBought) {
+		if (!lotSaving.isBought) {
 			isConfirm = true;
 		}
 	}
@@ -52,7 +53,7 @@ public class LotManagment : MonoBehaviour {
 							go.SetActive(true);
 						}
 						lot_Txt.SetActive(false);
-						isBought = true;
+						lotSaving.isBought = true;
 						isConfirm = false;
 					}
 				}

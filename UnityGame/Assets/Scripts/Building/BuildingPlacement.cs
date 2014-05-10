@@ -99,6 +99,7 @@ public class BuildingPlacement : MonoBehaviour {
 	public void SetItem(GameObject b, float price) {
 		hasPlaced = false;
 		currentBuilding = ((GameObject)Instantiate(b)).transform;
+		currentBuilding.name = b.name;
 		placeableBuilding = currentBuilding.GetComponent<PlaceableBuilding>();
 		buildingPrice = price;
 		foreach (GameObject go in lots) {
