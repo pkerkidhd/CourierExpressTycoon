@@ -5,7 +5,9 @@ public class GameManager : MonoBehaviour {
 
 	public static Economy_HUD ecoHUD;
 
+	//Check if building Menu is up
 	public static bool isBuilding = false;
+	public static bool isLotClicked = false;
 
 	// Use this for initialization
 	void Start () {

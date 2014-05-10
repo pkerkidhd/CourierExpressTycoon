@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameManager\GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SaveManager\SaveLoadManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\SaveManager\SaveLoadManager.cs" Line="99" Column="4" />
-      <File FileName="Assets\Scripts\SaveManager\SaveLoadManager.cs" Line="53" Column="6" />
-      <File FileName="Assets\Scripts\Clock\Clock.cs" Line="14" Column="8" />
-      <File FileName="Assets\Scripts\GameManager\GameManager.cs" Line="12" Column="63" />
+      <File FileName="Assets\Scripts\Player\Console.cs" Line="43" Column="1" />
+      <File FileName="Assets\Scripts\SaveManager\SaveLoadManager.cs" Line="108" Column="3" />
+      <File FileName="Assets\Scripts\GameManager\ProxyFunctions.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Console.cs" Line="19" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -53,12 +53,14 @@
      <Compile Include="Assets\Scripts\Building\PlaceableBuilding.cs" />
      <Compile Include="Assets\Scripts\Clock\Clock.cs" />
      <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
+     <Compile Include="Assets\Scripts\GameManager\ProxyFunctions.cs" />
      <Compile Include="Assets\Scripts\HUD\Economy_HUD.cs" />
      <Compile Include="Assets\Scripts\Lot\LotBuildingCheck.cs" />
      <Compile Include="Assets\Scripts\Lot\LotManagment.cs" />
      <Compile Include="Assets\Scripts\Lot\LotSaving.cs" />
      <Compile Include="Assets\Scripts\Lot\LotSpawnCar.cs" />
      <Compile Include="Assets\Scripts\Player\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\Console.cs" />
      <Compile Include="Assets\Scripts\SaveManager\SaveLoadManager.cs" />
      <None Include="Assets\Res\SaveData.xml" />
   </ItemGroup>

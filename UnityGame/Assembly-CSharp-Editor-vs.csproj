@@ -48,9 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\Editor\ByDesign Games Tools\ExtrasToolbar.cs" />
      <None Include="Assets\Res\SaveData.xml" />
- <Reference Include="Assembly-UnityScript">
- <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>A:\Program Files (x86)\Unity\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
  </Reference>

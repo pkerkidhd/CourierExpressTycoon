@@ -11,7 +11,7 @@ public class LotManagment : MonoBehaviour {
 	private float newBalance = 0;
 	private bool isConfirm = false;
 	private LotSaving lotSaving;
-	
+
 	void Start () {
 		renderer.material.color = Color.grey;
 		lot_Txt.GetComponent<TextMesh>().text = "Lot Price: $" + lotPrice;
@@ -19,7 +19,14 @@ public class LotManagment : MonoBehaviour {
 	}
 
 	void Update () {
-
+		if(lotSaving.isBought) {
+			lot_Placement.SetActive(true);
+			foreach (GameObject go in spawnCarNode) {
+				go.SetActive(true);
+			}
+			lot_Txt.SetActive(false);
+			lotSaving.isBought = true;
+		}
 	}
 
 	void OnMouseOver() {
@@ -35,14 +42,15 @@ public class LotManagment : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		if (!lotSaving.isBought) {
+		if (!lotSaving.isBought && !GameManager.isBuilding && !GameManager.isLotClicked) {
 			isConfirm = true;
+			GameManager.isLotClicked = true;
 		}
 	}
 
 	void OnGUI() {
 		if(!GameManager.isBuilding) {
-			if(isConfirm) {
+			if(isConfirm && GameManager.isLotClicked) {
 				GUI.Box(new Rect(Screen.width / 2, Screen.height / 2,150,90), "Buy Lot for $" + lotPrice);
 				if(GUI.Button(new Rect(Screen.width / 2 + 30, Screen.height / 2 + 30,80,20), "Yes")) {
 					newBalance = GameManager.ecoHUD.playerMoney - lotPrice;
@@ -54,10 +62,12 @@ public class LotManagment : MonoBehaviour {
 						}
 						lot_Txt.SetActive(false);
 						lotSaving.isBought = true;
+						GameManager.isLotClicked = false;
 						isConfirm = false;
 					}
 				}
 				if(GUI.Button(new Rect(Screen.width / 2 + 30, Screen.height / 2 + 55,80,20), "No")) {
+					GameManager.isLotClicked = false;
 					isConfirm = false;
 				}
 

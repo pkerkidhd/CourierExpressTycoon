@@ -29,6 +29,7 @@ public class BuildingManager : MonoBehaviour {
 					if (newBalance >= 0) {
 						buildingPlacement.SetItem(go.gameObject, buildingPrice);
 						GameManager.isBuilding = true;
+						GameManager.isLotClicked = false;
 					}
 				}
 			}
