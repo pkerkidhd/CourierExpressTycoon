@@ -17,8 +17,12 @@ public class MainMenu : MonoBehaviour {
 
 	private bool editing = false;
 
+	private GOD god;
+
 	// Use this for initialization
 	void Start () {
+
+		god = (GOD)FindObjectOfType(typeof(GOD));
 
 		resolutions = new Resolution[20];
 
@@ -123,12 +127,18 @@ public class MainMenu : MonoBehaviour {
 			}
 			break;
 		default:
-			if (GUI.Button(new Rect(Screen.width / 2 - 25, Screen.height / 2 - 75, 100, 30), "New Game"))
+			if (GUI.Button(new Rect(Screen.width / 2 - 25, Screen.height / 2 - 75, 100, 30), "New Game")) {
+				checkScene.checkMenu = true;
+				Application.LoadLevel("MainGame");
 				Debug.Log("New Game BTN");
-			if (GUI.Button(new Rect(Screen.width / 2 - 25, Screen.height / 2 - 40, 100, 30), "Load Game"))
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 25, Screen.height / 2 - 40, 100, 30), "Load Game")) {
+				checkScene.checkMenu = true;
+				GOD.isLoad = true;
+				Application.LoadLevel("MainGame");
 				Debug.Log("Load Game BTN");
-			if (GUI.Button(new Rect(Screen.width / 2 - 25, Screen.height / 2 - 5, 100, 30), "Options"))
-			{
+			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 25, Screen.height / 2 - 5, 100, 30), "Options")) {
 				setCurrentBtn("Options");
 				Debug.Log("Options BTN");
 			}
@@ -140,9 +150,9 @@ public class MainMenu : MonoBehaviour {
 
 
 
-		vSliderValue = GUI.VerticalSlider(new Rect(10, 170, 100, 30), vSliderValue, 10.0F, 0.0F);
-		hSValue = GUI.HorizontalScrollbar(new Rect(10, 210, 100, 30), hSValue, 1.0F, 0.0F, 10.0F);
-		vSValue = GUI.VerticalScrollbar(new Rect(10, 230, 100, 30), vSValue, 1.0F, 10.0F, 0.0F);
+//		vSliderValue = GUI.VerticalSlider(new Rect(10, 170, 100, 30), vSliderValue, 10.0F, 0.0F);
+//		hSValue = GUI.HorizontalScrollbar(new Rect(10, 210, 100, 30), hSValue, 1.0F, 0.0F, 10.0F);
+//		vSValue = GUI.VerticalScrollbar(new Rect(10, 230, 100, 30), vSValue, 1.0F, 10.0F, 0.0F);
 	}
 
 	void setCurrentBtn(string btnName) {

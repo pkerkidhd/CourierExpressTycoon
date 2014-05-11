@@ -3,10 +3,10 @@
 	<PlayerData>
 		<Player>
 			<PlayerName>PkerkidHD</PlayerName>
-			<Money>110</Money>
+			<Money>10060</Money>
 		</Player>
 		<Clock>
-			<Seconds>14.60014</Seconds>
+			<Seconds>46.32087</Seconds>
 			<Minutes>1</Minutes>
 			<Hours>1</Hours>
 			<OldHours>0</OldHours>
@@ -151,6 +151,12 @@
 			<X>45.89544</X>
 			<Y>0.2</Y>
 			<Z>31.33172</Z>
+		</Building>
+		<Building>
+			<Name>Office</Name>
+			<X>38.29526</X>
+			<Y>0.2</Y>
+			<Z>35.46334</Z>
 		</Building>
 	</BuildingData>
 	<LotData>

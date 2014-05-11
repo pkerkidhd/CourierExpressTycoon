@@ -21,6 +21,7 @@ public class SaveLoadManager : MonoBehaviour {
 	private string _playerName;
 
 	private string fileLocation;
+	private GameObject god;
 
 
 	void Start () {
@@ -31,6 +32,13 @@ public class SaveLoadManager : MonoBehaviour {
 
 		lots = GameObject.FindGameObjectsWithTag("Lot");
 		fileLocation = @"Assets\Res\SaveData.xml";
+
+		god = GameObject.Find("GOD");
+
+		if (GOD.isLoad) {
+			LoadFunction();
+			GOD.isLoad = false;
+		}
 	}
 
 	void Update() {
@@ -47,8 +55,9 @@ public class SaveLoadManager : MonoBehaviour {
 			if(GUI.Button(new Rect(Screen.width / 2 + 30, Screen.height / 2 + 30,80,20), "Save")) {
 				SaveFunction();
 			}
-			if(GUI.Button(new Rect(Screen.width / 2 + 30, Screen.height / 2 + 55,80,20), "Load")) {
-				LoadFunction();
+			if(GUI.Button(new Rect(Screen.width / 2 + 30, Screen.height / 2 + 55,80,20), "Back To Main Menu")) {
+				Destroy(god);
+				Application.LoadLevel("MainMenu");
 			}
 			Time.timeScale = 0.0f;
 		} else {

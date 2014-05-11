@@ -52,8 +52,10 @@
      <Compile Include="Assets\Scripts\Building\BuildingPlacement.cs" />
      <Compile Include="Assets\Scripts\Building\PlaceableBuilding.cs" />
      <Compile Include="Assets\Scripts\Clock\Clock.cs" />
+     <Compile Include="Assets\Scripts\GOD.cs" />
      <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
      <Compile Include="Assets\Scripts\GameManager\ProxyFunctions.cs" />
+     <Compile Include="Assets\Scripts\GameManager\checkScene.cs" />
      <Compile Include="Assets\Scripts\HUD\Economy_HUD.cs" />
      <Compile Include="Assets\Scripts\Lot\LotBuildingCheck.cs" />
      <Compile Include="Assets\Scripts\Lot\LotManagment.cs" />
