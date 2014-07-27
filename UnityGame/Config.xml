@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config>
+	<ServerData>
+		<DedicatedServer>false</DedicatedServer>
+		<ServerPort>25565</ServerPort>
+		<ServerMaxPlayers>10</ServerMaxPlayers>
+		<ServerType>Survival</ServerType>
+		<ServerName>Test Server</ServerName>
+		<ServerComments>Woot this is a test server!</ServerComments>
+	</ServerData>
+</Config>

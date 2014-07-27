@@ -14,8 +14,6 @@ public class SaveLoadManager : MonoBehaviour {
 	public BuildingData buildingData;
 	public LotData lotData;
 
-	private Economy_HUD ecoHUD;
-	private Clock clock;
 	private ProxyFunctions proxyFunc;
 
 	private string _playerName;
@@ -23,15 +21,16 @@ public class SaveLoadManager : MonoBehaviour {
 	private string fileLocation;
 	private GameObject god;
 
+	private float loadMoney;
+
 
 	void Start () {
 
-		ecoHUD = GetComponent<Economy_HUD>();
-		clock = GetComponent<Clock>();
 		proxyFunc = GetComponent<ProxyFunctions>();
 
 		lots = GameObject.FindGameObjectsWithTag("Lot");
-		fileLocation = @"Assets\Res\SaveData.xml";
+		//fileLocation = @"Assets\Res\SaveData.xml";
+		fileLocation = "SaveData.xml";
 
 		god = GameObject.Find("GOD");
 
@@ -51,6 +50,7 @@ public class SaveLoadManager : MonoBehaviour {
 
 	void OnGUI() {
 		if (isPause) {
+			GameManager.clockSys.IsPause = true;
 			GUI.Box(new Rect(Screen.width / 2, Screen.height / 2,150,90), "Options");
 			if(GUI.Button(new Rect(Screen.width / 2 + 30, Screen.height / 2 + 30,80,20), "Save")) {
 				SaveFunction();
@@ -59,9 +59,8 @@ public class SaveLoadManager : MonoBehaviour {
 				Destroy(god);
 				Application.LoadLevel("MainMenu");
 			}
-			Time.timeScale = 0.0f;
 		} else {
-			Time.timeScale = 1.0f;
+			GameManager.clockSys.IsPause = false;
 		}
 	}
 	
@@ -74,7 +73,8 @@ public class SaveLoadManager : MonoBehaviour {
 		XmlNode playerNameNode = doc.SelectSingleNode("/SaveData/PlayerData/Player/PlayerName");
 		XmlNode playerMoneyNode = doc.SelectSingleNode("/SaveData/PlayerData/Player/Money");
 		_playerName = playerNameNode.InnerText;
-		float.TryParse(playerMoneyNode.InnerText, out ecoHUD.playerMoney);
+		float.TryParse(playerMoneyNode.InnerText, out loadMoney);
+		GameManager.currencySys.loadPlyMoney(loadMoney);
 
 		//Loading Clock Data
 		XmlNode clockSecondsNode = doc.SelectSingleNode("/SaveData/PlayerData/Clock/Seconds");
@@ -82,11 +82,11 @@ public class SaveLoadManager : MonoBehaviour {
 		XmlNode clockHoursNode = doc.SelectSingleNode("/SaveData/PlayerData/Clock/Hours");
 		XmlNode clockOldHoursNode = doc.SelectSingleNode("/SaveData/PlayerData/Clock/OldHours");
 		XmlNode clockIsAmNode = doc.SelectSingleNode("/SaveData/PlayerData/Clock/IsAM");
-		float.TryParse(clockSecondsNode.InnerText, out clock.seconds);
-		float.TryParse(clockMinutesNode.InnerText, out clock.minutes);
-		float.TryParse(clockHoursNode.InnerText, out clock.hours);
-		float.TryParse(clockOldHoursNode.InnerText, out clock.oldHours);
-		clock.isAm = bool.Parse(clockIsAmNode.InnerText);
+		float.TryParse(clockSecondsNode.InnerText, out GameManager.clockSys.seconds);
+		float.TryParse(clockMinutesNode.InnerText, out GameManager.clockSys.minutes);
+		float.TryParse(clockHoursNode.InnerText, out GameManager.clockSys.hours);
+		float.TryParse(clockOldHoursNode.InnerText, out GameManager.clockSys.oldHours);
+		GameManager.clockSys.isAm = bool.Parse(clockIsAmNode.InnerText);
 
 		//Loading Lot Data
 		XmlNodeList lotsListNode = doc.SelectNodes("/SaveData/LotData/Lot");
@@ -120,7 +120,7 @@ public class SaveLoadManager : MonoBehaviour {
 		
 		buildings = GameObject.FindGameObjectsWithTag("Building");
 
-		playerData = new PlayerData("PkerkidHD", ecoHUD.playerMoney);
+		playerData = new PlayerData("PkerkidHD", GameManager.currencySys.getPlyMoney());
 		
 		XmlWriterSettings xmlWriterSettings = new XmlWriterSettings()
 		{
@@ -144,11 +144,11 @@ public class SaveLoadManager : MonoBehaviour {
 
 			//Clock Data
 			xml.WriteStartElement("Clock");
-			xml.WriteElementString("Seconds", clock.seconds.ToString());
-			xml.WriteElementString("Minutes", clock.minutes.ToString());
-			xml.WriteElementString("Hours", clock.hours.ToString());
-			xml.WriteElementString("OldHours", clock.oldHours.ToString());
-			xml.WriteElementString("IsAM", clock.isAm.ToString());
+			xml.WriteElementString("Seconds", GameManager.clockSys.seconds.ToString());
+			xml.WriteElementString("Minutes", GameManager.clockSys.minutes.ToString());
+			xml.WriteElementString("Hours", GameManager.clockSys.hours.ToString());
+			xml.WriteElementString("OldHours", GameManager.clockSys.oldHours.ToString());
+			xml.WriteElementString("IsAM", GameManager.clockSys.isAm.ToString());
 			xml.WriteEndElement();
 			xml.WriteEndElement();
 

@@ -11,18 +11,30 @@ public class MainMenu : MonoBehaviour {
 	private float hSValue = 0.0F;
 	private float vSValue = 0.0F;
 
+	//
 	private string _btnName;
 	private Resolution[] resolutions;
 	private int[] refreshRate = new int[2] { 30, 60 };
 
+	//
 	private bool editing = false;
 
 	private GOD god;
 
+	private Servers server;
+
+	//Network
+	private bool loading = false;
+	private Vector2 scrollPos = Vector2.zero;
+	//private Vector2 scrollPos = new Vector2(Screen.width / 2, Screen.height / 2);
+
 	// Use this for initialization
 	void Start () {
-
+		
 		god = (GOD)FindObjectOfType(typeof(GOD));
+		server = gameObject.AddComponent<Servers>();
+
+		refreshHostList();
 
 		resolutions = new Resolution[20];
 
@@ -126,6 +138,37 @@ public class MainMenu : MonoBehaviour {
 				Debug.Log("Back BTN");
 			}
 			break;
+		case "Multiplayer":
+			GUILayout.BeginArea(new Rect(Screen.width / 2, Screen.height / 2, 200, 300));
+			if (GUILayout.Button("Refresh")) {
+				refreshHostList();
+			}
+
+			if (loading) {
+				GUILayout.Label("Loading...");
+			} else {
+				scrollPos = GUILayout.BeginScrollView(scrollPos, GUILayout.Width(200.0f), GUILayout.Height(200.0f));
+				HostData[] hosts = MasterServer.PollHostList();
+				for (int i = 0; i < hosts.Length; i++) {
+					if (GUILayout.Button(hosts[i].gameName, GUILayout.ExpandWidth(true))) {
+						//Network.Connect(hosts[i]);
+						//Debug.Log("Connected!");
+						NetworkManager.connectServer(hosts[i]);
+					}
+				}
+				if (hosts.Length == 0) 
+				{
+					GUILayout.Label("No servers running");
+				}
+			}
+			GUILayout.EndHorizontal();
+
+			if (GUI.Button(new Rect(Screen.width / 2 - 25, Screen.height / 2 + 50, 100, 30), "Back"))
+			{
+				setCurrentBtn(null);
+				Debug.Log("Back BTN");
+			}
+			break;
 		default:
 			if (GUI.Button(new Rect(Screen.width / 2 - 25, Screen.height / 2 - 75, 100, 30), "New Game")) {
 				checkScene.checkMenu = true;
@@ -142,6 +185,11 @@ public class MainMenu : MonoBehaviour {
 				setCurrentBtn("Options");
 				Debug.Log("Options BTN");
 			}
+			if (GUI.Button(new Rect(Screen.width / 2 - 25, Screen.height / 2 - 125, 100, 30), "Multiplayer")) {
+				MasterServer.RequestHostList("Survival");
+				setCurrentBtn("Multiplayer");
+				Debug.Log("Multiplayer BTN");
+			}
 			if (GUI.Button(new Rect(Screen.width / 2 - 25, Screen.height / 2 + 30, 100, 30), "Quit"))
 				Application.Quit();
 			break;
@@ -157,6 +205,25 @@ public class MainMenu : MonoBehaviour {
 
 	void setCurrentBtn(string btnName) {
 		_btnName = btnName;
+	}
+
+	void refreshHostList() {
+		loading = true;
+		MasterServer.ClearHostList();
+		MasterServer.RequestHostList("Survival");
+	}
+
+	void OnFailedToConnect(NetworkConnectionError error) {
+		Debug.Log("Could not connect to server: " + error);
+	}
+
+	void OnMasterServerEvent(MasterServerEvent msEvent) {
+		if (msEvent == MasterServerEvent.HostListReceived)
+			loading = false;
+	}
+
+	void OnFailedToConnectToMasterServer(NetworkConnectionError info) {
+		Debug.Log("Could not connect to master server: " + info);
 	}
 
 }

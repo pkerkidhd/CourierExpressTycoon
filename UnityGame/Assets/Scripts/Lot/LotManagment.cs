@@ -53,9 +53,10 @@ public class LotManagment : MonoBehaviour {
 			if(isConfirm && GameManager.isLotClicked) {
 				GUI.Box(new Rect(Screen.width / 2, Screen.height / 2,150,90), "Buy Lot for $" + lotPrice);
 				if(GUI.Button(new Rect(Screen.width / 2 + 30, Screen.height / 2 + 30,80,20), "Yes")) {
-					newBalance = GameManager.ecoHUD.playerMoney - lotPrice;
+					renderer.material.color = Color.grey;
+					newBalance = GameManager.currencySys.getPlyMoney() - lotPrice;
 					if (newBalance >= 0) {
-						GameManager.ecoHUD.playerMoney -= lotPrice;
+						GameManager.currencySys.updatePlyMoney(-lotPrice);
 						lot_Placement.SetActive(true);
 						foreach (GameObject go in spawnCarNode) {
 							go.SetActive(true);

@@ -40,7 +40,7 @@ public class BuildingPlacement : MonoBehaviour {
 							}
 						}
 					}
-					GameManager.ecoHUD.playerMoney -= buildingPrice;
+					GameManager.currencySys.updatePlyMoney(-buildingPrice);
 					GameManager.isBuilding = false;
 				}
 			} else if (Input.GetMouseButton(1)) {

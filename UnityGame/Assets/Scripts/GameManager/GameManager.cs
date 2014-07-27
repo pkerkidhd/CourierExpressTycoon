@@ -2,8 +2,11 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-
-	public static Economy_HUD ecoHUD;
+	
+	public static CurrencySystem currencySys;
+	public static ClockSystem clockSys;
+	public static UpdateSytem updateSys;
+	public static CalendarSystem calendarSys;
 
 	//Check if building Menu is up
 	public static bool isBuilding = false;
@@ -11,7 +14,10 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		ecoHUD = (Economy_HUD)FindObjectOfType(typeof(Economy_HUD));
+		currencySys = GetComponent<CurrencySystem>();
+		clockSys = GetComponent<ClockSystem>();
+		updateSys = GetComponent<UpdateSytem>();
+		calendarSys = GetComponent<CalendarSystem>();
 	}
 	
 	// Update is called once per frame

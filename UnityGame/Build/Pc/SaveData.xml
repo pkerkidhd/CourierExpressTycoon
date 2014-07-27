@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SaveData>
+	<PlayerData>
+		<Player>
+			<PlayerName>PkerkidHD</PlayerName>
+			<Money>890</Money>
+		</Player>
+		<Clock>
+			<Seconds>5.819995</Seconds>
+			<Minutes>0</Minutes>
+			<Hours>1</Hours>
+			<OldHours>0</OldHours>
+			<IsAM>True</IsAM>
+		</Clock>
+	</PlayerData>
+	<BuildingData>
+		<Building>
+			<Name>House</Name>
+			<X>34.00585</X>
+			<Y>0.2</Y>
+			<Z>33.43008</Z>
+		</Building>
+	</BuildingData>
+	<LotData>
+		<Lot>
+			<Name>Lot 2</Name>
+			<Bought>True</Bought>
+		</Lot>
+	</LotData>
+</SaveData>

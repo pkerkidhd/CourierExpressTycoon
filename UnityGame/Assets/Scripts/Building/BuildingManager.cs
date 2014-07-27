@@ -25,7 +25,7 @@ public class BuildingManager : MonoBehaviour {
 			buildingPrice = go.gameObject.GetComponent<BuildingCost>().Cost;
 			if (GUI.Button(new Rect(Screen.width/20,Screen.height/15 + Screen.height/12 * i, 100, 30), go.gameObject.name)) {
 				if(!GameManager.isBuilding) {
-					newBalance = GameManager.ecoHUD.playerMoney - buildingPrice;
+					newBalance = GameManager.currencySys.getPlyMoney() - buildingPrice;
 					if (newBalance >= 0) {
 						buildingPlacement.SetItem(go.gameObject, buildingPrice);
 						GameManager.isBuilding = true;

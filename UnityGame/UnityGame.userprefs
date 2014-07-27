@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SaveManager\SaveLoadManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Network\NetworkManagerServer.cs">
     <Files>
-      <File FileName="Assets\Scripts\SaveManager\SaveLoadManager.cs" Line="284" Column="2" />
+      <File FileName="Assets\Scripts\Network\NetworkManager.cs" Line="28" Column="3" />
+      <File FileName="Assets\Scripts\Network\NetworkManagerServer.cs" Line="15" Column="25" />
+      <File FileName="Assets\Scripts\Network\ServerScript.cs" Line="40" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

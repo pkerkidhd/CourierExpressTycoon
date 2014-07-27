@@ -1,0 +1,37 @@
+Base path: A:/Program Files (x86)/Unity/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-1-3228
+Cmd: getPlatforms
+Cmd: preprocess
+  insize=5136 outsize=2085 ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=3355 outsize=449 kw=WATER_REFRACTIVE ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=3355 outsize=810 kw=WATER_REFRACTIVE ok=1
+Cmd: preprocess
+  insize=12907 outsize=2601 ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=10214 outsize=2620 kw=WATER_REFLECTIVE WATER_VERTEX_DISPLACEMENT_ON WATER_EDGEBLEND_ON ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=10214 outsize=1826 kw=WATER_REFLECTIVE WATER_VERTEX_DISPLACEMENT_ON WATER_EDGEBLEND_ON ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=10218 outsize=2463 kw=WATER_REFLECTIVE WATER_VERTEX_DISPLACEMENT_ON WATER_EDGEBLEND_ON ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=10218 outsize=1339 kw=WATER_REFLECTIVE WATER_VERTEX_DISPLACEMENT_ON WATER_EDGEBLEND_ON ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=9960 outsize=277 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=9960 outsize=1100 kw= ok=1
+Cmd: preprocess
+  insize=12074 outsize=2482 ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=9500 outsize=2566 kw=WATER_REFLECTIVE WATER_VERTEX_DISPLACEMENT_ON WATER_EDGEBLEND_ON ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=9500 outsize=1421 kw=WATER_REFLECTIVE WATER_VERTEX_DISPLACEMENT_ON WATER_EDGEBLEND_ON ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=9504 outsize=2427 kw=WATER_REFLECTIVE WATER_VERTEX_DISPLACEMENT_ON WATER_EDGEBLEND_ON ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=9504 outsize=1250 kw=WATER_REFLECTIVE WATER_VERTEX_DISPLACEMENT_ON WATER_EDGEBLEND_ON ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=9246 outsize=231 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=9246 outsize=1100 kw= ok=1
